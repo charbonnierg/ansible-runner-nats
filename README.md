@@ -25,7 +25,7 @@ Headers can be configured to be sent with each message.
 
 They can be provided as comma separated list of keyvalues (using `=`).
 
-Example: `RUNNER_NATS_HEADERS="producer=ansible-runner,foo=bar",
+Example: `RUNNER_NATS_HEADERS="producer=ansible-runner,foo=bar"`
 
 ### Configuring NATS client
 
