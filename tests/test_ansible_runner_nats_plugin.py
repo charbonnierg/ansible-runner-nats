@@ -13,12 +13,14 @@ from nats.aio.msg import Msg
 
 from ansible_runner_nats.tools import run_playbook
 
+from natsd import NATSD
+
 PRIVATE_DATA_DIR = Path(__file__).parent / "data"
 HOSTNAME = socket.gethostname()
 
 
 @pytest.mark.asyncio
-async def test_run_without_plugin() -> None:
+async def test_run_without_plugin(nats_server: NATSD) -> None:
     """Run a playbook and expect plugin to be disabled."""
 
     events: t.List[t.Dict[str, t.Any]] = []
@@ -58,7 +60,7 @@ async def test_run_without_plugin() -> None:
 
 
 @pytest.mark.asyncio
-async def test_run_with_plugin() -> None:
+async def test_run_with_plugin(nats_server: NATSD) -> None:
     """Run a playbook and expect plugin to be enabled (messages are published on NATS)."""
 
     events: t.List[t.Dict[str, t.Any]] = []
@@ -111,7 +113,7 @@ async def test_run_with_plugin() -> None:
 
 
 @pytest.mark.asyncio
-async def test_run_with_plugin_from_env() -> None:
+async def test_run_with_plugin_from_env(nats_server: NATSD) -> None:
     """Run a playbook and expect plugin to be enabled (messages are published on NATS)."""
 
     events: t.List[t.Dict[str, t.Any]] = []
