@@ -7,17 +7,26 @@ For more details and the latest documentation see: https://ansible-runner.readth
 
 ## Configuring the emitter
 
-### Enabling the emitter
+### Default behaviour
 
 By default the emitter is disabled.
 
-In order to enable the emitter, either manually set a value for the key `nats_subject_id` in the settings of the runner config, or set the environment variable `RUNNER_NATS_SUBJECT_ID`.
+### Enabling the emitter
 
-If `RUNNER_NATS_SUBJECT_ID` is set to `hostname`, then hostname read using `socket.gethostname()` is used as subject id.
+In order to enable the emitter, subject ID must be configured either as `nats_subject_id` variable or as an environment variable:
 
-Messages published by the emitter are published to the following subjects: `pub.ansible.runner.{subject_id}.{runner_ident}.[event|status]`.
+- `RUNNER_NATS_SUBJECT_ID`: Subject ID
 
-Only `subject_id` can be configured.
+When subject ID is configured, messages are published to the following subjects:
+
+- `pub.ansible.runner.{subject_id}.{runner_ident}.event`: message contains an event
+
+- `pub.ansible.runner.{subject_id}.{runner_ident}.status`: message contains a status update
+
+> `runner_ident` is an auto-generated UUID assigned to each runner instance.
+
+> Special case: if `RUNNER_NATS_SUBJECT_ID` is set to `hostname`, then hostname read using `socket.gethostname()` is used as subject id.
+
 
 ### Configuring headers
 
