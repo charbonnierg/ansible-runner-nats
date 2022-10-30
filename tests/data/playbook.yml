@@ -1,0 +1,7 @@
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    message: hello
+  tasks:
+    - debug: msg={{ message }}
