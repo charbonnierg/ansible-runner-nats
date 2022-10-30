@@ -34,7 +34,7 @@ jobs:
       - name: Lint with mypy
         run: |
           # stop the build if there are any error
-          mypy ansible_runner_nats
+          mypy src/ansible_runner_nats
 
       - name: Test with pytest
         run: |
