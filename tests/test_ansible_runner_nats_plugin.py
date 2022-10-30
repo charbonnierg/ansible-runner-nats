@@ -54,7 +54,7 @@ async def test_run_without_plugin(nats_server: NATSD) -> None:
         )
 
         await asyncio.get_running_loop().run_in_executor(None, run_playbook, rc)
-
+        await asyncio.sleep(0.1)
         assert len(status) == 0
         assert len(events) == 0
 
@@ -97,7 +97,7 @@ async def test_run_with_plugin(nats_server: NATSD) -> None:
         status_str, status_code = await loop.run_in_executor(
             None, run_playbook, rc, "test"
         )
-
+        await asyncio.sleep(0.1)
         assert status_str == "successful"
         assert status_code == 0
         assert len(status) == 3
@@ -157,7 +157,7 @@ async def test_run_with_plugin_from_env(nats_server: NATSD) -> None:
                 None,
                 runner.run,
             )
-
+            await asyncio.sleep(0.1)
             assert status_str == "successful"
             assert status_code == 0
             assert len(status) == 3

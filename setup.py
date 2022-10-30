@@ -10,7 +10,7 @@ with open("README.md", "r") as f:
 
 setup(
     name="ansible-runner-nats",
-    version="0.1.0",
+    version="0.2.0",
     author="Guillaume Charbonnier",
     url="https://github.com/charbonnierg/ansible-runner-nats",
     license="Apache",
