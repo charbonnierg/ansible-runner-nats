@@ -27,8 +27,8 @@ dev = ["black", "isort", "flake8", "mypy"]
 ansible = ["ansible"]
 
 [project.urls]
-source = "https://github.com/charbonnierg/ansible-runner-nats"
-issues = "https://github.com/charbonnierg/ansible-runner-nats/issues"
+Repository = "https://github.com/charbonnierg/ansible-runner-nats"
+Issues = "https://github.com/charbonnierg/ansible-runner-nats/issues"
 
 [project.entry-points."ansible_runner.plugins"]
 nats = "ansible_runner_nats"
