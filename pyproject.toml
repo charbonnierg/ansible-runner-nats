@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ansible-runner-nats"
+authors = [
+    { author = "Guillaume Charbonnier", email = "guillaume.charbonnier@araymond.com" },
+]
+description = "Ansible Runner NATS emitter"
+readme = "README.md"
+requires-python = ">=3.7"
+keywords = ["ansible", "ansible-runner"]
+license = { text = "Apache-2.0" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+]
+dynamic = ["version"]
+dependencies = ["nats-py"]
+
+[project.optional-dependencies]
+nkeys = ["nats-py[nkeys]"]
+websocket = ["aiohttp"]
+tests = ["ansible-runner", "pytest", "pytest-cov", "pytest-asyncio"]
+dev = ["black", "isort", "flake8", "mypy"]
+ansible = ["ansible"]
+
+[project.urls]
+source = "https://github.com/charbonnierg/ansible-runner-nats"
+issues = "https://github.com/charbonnierg/ansible-runner-nats/issues"
+
+[project.entry-points."ansible_runner.plugins"]
+nats = "ansible_runner_nats"
+
+[tool.setuptools.dynamic]
+version = { attr = "ansible_runner_nats.__version__" }
